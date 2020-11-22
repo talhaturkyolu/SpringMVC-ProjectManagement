@@ -80,10 +80,10 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="password" class="col-form-label">Password</label>
-                                                    <input id="password" type="text" placeholder="password" class="form-control" required
-                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
+                                                    <input id="password" type="text" placeholder="password" class="form-control"
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
                                                     <div class="invalid-feedback">
-                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters
+                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters"
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@
                                                 <div class="form-group">
                                                     <label for="passwordconfirmation" class="col-form-label">Password Confirmation</label>
                                                     <input id="passwordconfirmation" type="text" placeholder="re-enter password" class="form-control" required
-                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">>
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
 
                                                     <div class="invalid-feedback">
                                                         Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters
@@ -238,7 +238,7 @@
 
 </div>
 
-<div th:replace="/fragments/javascript :: js"></div>
+<div th:replace="fragments/javascript :: js"></div>
 
 </body>
 

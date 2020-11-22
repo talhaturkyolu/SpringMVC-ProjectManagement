@@ -32,19 +32,25 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form>
+                                    <form class="needs-validation" novalidate>
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstname" class="col-form-label">First Name</label>
-                                                    <input id="firstname" type="text" placeholder="first name" class="form-control">
+                                                    <input id="firstname" type="text" placeholder="first name" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter first name.
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="lastname" class="col-form-label">Last Name</label>
-                                                    <input id="lastname" type="text" placeholder="last name" class="form-control">
+                                                    <input id="lastname" type="text" placeholder="last name" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter last name.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,14 +58,21 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="emailaddress" class="col-form-label">Email address</label>
-                                                    <input id="emailaddress" type="text" placeholder="email address" class="form-control">
+                                                    <input id="emailaddress" type="text" placeholder="email address" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter email.
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="mobilenumber" class="col-form-label">Mobile Number</label>
-                                                    <input id="mobilenumber" type="text" placeholder="Mobile Number" class="form-control">
+                                                    <input id="mobilenumber" type="text" placeholder="Mobile Number" class="form-control" required
+                                                           pattern="^\d{10}$">
+                                                    <div class="invalid-feedback">
+                                                        Please enter 10 digit mobile number.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,14 +80,22 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="password" class="col-form-label">Password</label>
-                                                    <input id="password" type="text" placeholder="password" class="form-control">
+                                                    <input id="password" type="text" placeholder="password" class="form-control" required
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
+                                                    <div class="invalid-feedback">
+                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="passwordconfirmation" class="col-form-label">Password Confirmation</label>
-                                                    <input id="passwordconfirmation" type="text" placeholder="re-enter password" class="form-control">
+                                                    <input id="passwordconfirmation" type="text" placeholder="re-enter password" class="form-control" required>
+                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
+                                                    <div class="invalid-feedback">
+                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

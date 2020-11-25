@@ -1,8 +1,6 @@
 package com.befty.implementation;
 
 import com.befty.dto.RoleDTO;
-import com.befty.dto.UserDTO;
-import com.befty.service.CrudService;
 import com.befty.service.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +20,12 @@ public class RoleServiceImpl extends AbstractMapService<RoleDTO,Long> implements
     }
 
     @Override
-    public RoleDTO findByID(Long id) {
+    public RoleDTO findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public void deleteBYId(Long id) {
+    public void deleteById(Long id) {
         super.deleteById(id);
     }
 

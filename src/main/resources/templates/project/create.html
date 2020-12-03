@@ -34,12 +34,12 @@
                                     <!-- ------------------------FORM START----------------------------- -->
                                     <div class="row">
                                         <div class="col-lg-12 col-sm-12">
-                                    <form>
+                                    <form class="needs-validation" novalidate th:action="@{/project/create}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col-sm-7 col-md-7">
                                                 <div class="form-group">
                                                     <label for="project_name" class="col-form-label">Project Name</label>
-                                                    <input id="project_name" type="text" placeholder="project name" class="form-control">
+                                                    <input id="project_name" type="text" placeholder="project name" th:field="*{projectName}" class="form-control">
                                                 </div>
                                             </div>
                                             <!-- End Project Name  -->
@@ -47,7 +47,7 @@
                                             <div class="col-sm-7 col-md-7">
                                                 <div class="form-group">
                                                     <label for="project_code" class="col-form-label">Project Code</label>
-                                                    <input id="project_code" type="text" placeholder="project code" class="form-control">
+                                                    <input id="project_code" type="text" placeholder="project code" th:field="*{projectCode}" class="form-control">
                                                 </div>
                                             </div>
                                             <!-- End Project Code  -->
@@ -73,7 +73,7 @@
                                                 <div class="form-group">
                                                     <label>Project Start Date</label>
                                                     <div class="input-group date" id="project_start_date" data-target-input="nearest">
-                                                        <input type="date" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                                        <input type="date" class="form-control datetimepicker-input" th:field="*{startDate}" data-target="#datetimepicker4" />
                                                         <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                                         </div>
                                                     </div>
@@ -86,7 +86,7 @@
                                                 <div class="form-group">
                                                     <label>Project End Date</label>
                                                     <div class="input-group date" id="project_end_date" data-target-input="nearest">
-                                                        <input type="date" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                                        <input type="date" class="form-control datetimepicker-input"  th:field="*{endDate}" data-target="#datetimepicker4" />
                                                         <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                                         </div>
                                                     </div>
@@ -98,7 +98,7 @@
                                             <div class="col-sm-7 col-md-7">
                                                 <label>Project Detail</label>
                                                 <div class="form-group">
-                                        <textarea id="project_detail" name="detail"
+                                        <textarea id="project_detail" name="detail" th:field="*{projectDetail}"
                                                   rows="3" cols="92" placeholder=""></textarea>
                                                 </div>
                                             </div>

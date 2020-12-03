@@ -1,24 +1,31 @@
 package com.befty.bootstrap;
 
+import com.befty.dto.ProjectDTO;
 import com.befty.dto.RoleDTO;
 import com.befty.dto.UserDTO;
 import com.befty.enums.Gender;
+import com.befty.enums.Status;
+import com.befty.service.ProjectService;
 import com.befty.service.RoleService;
 import com.befty.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class DataGenerator implements CommandLineRunner {
 
     RoleService roleService;
     UserService userService;
+    ProjectService projectService;
 
     @Autowired
-    public DataGenerator(RoleService roleService, UserService userService) {
+    public DataGenerator(RoleService roleService, UserService userService,ProjectService projectService) {
         this.roleService = roleService;
         this.userService = userService;
+        this.projectService = projectService;
     }
 
     @Override
@@ -33,7 +40,7 @@ public class DataGenerator implements CommandLineRunner {
         roleService.save(employeeRole);
 
         UserDTO user1 = new UserDTO("John", "Kesy",
-                "admin@befty.com", "abc", true, "7459684532", adminRole, Gender.MALE);
+                "admin@befty.com", "abc", true, "7459684532", managerRole, Gender.MALE);
         UserDTO user5 = new UserDTO("John", "Kesy",
                 "admin2@befty.com", "abc", true, "7459684532", adminRole, Gender.MALE);
         UserDTO user2 = new UserDTO("Delisa",
@@ -48,6 +55,17 @@ public class DataGenerator implements CommandLineRunner {
         userService.save(user3);
         userService.save(user4);
         userService.save(user5);
+
+        ProjectDTO project1 = new ProjectDTO("Spring MVC", "PR001",user1, LocalDate.now(),LocalDate.now().plusDays(25),
+                "Creating Controllers", Status.OPEN);
+        ProjectDTO project2 = new ProjectDTO("Spring ORM", "PR002",user2, LocalDate.now(),LocalDate.now().plusDays(10),
+                "Creating Database", Status.IN_PROGRESS);
+        ProjectDTO project3 = new ProjectDTO("Spring Container", "PR003",user1, LocalDate.now(),LocalDate.now().plusDays(32),
+                "Creating Container", Status.UAT_TEST);
+
+        projectService.save(project1);
+        projectService.save(project2);
+        projectService.save(project3);
 
 
 

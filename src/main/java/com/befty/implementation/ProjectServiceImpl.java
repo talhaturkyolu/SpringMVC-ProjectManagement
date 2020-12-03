@@ -2,9 +2,11 @@ package com.befty.implementation;
 
 import com.befty.dto.ProjectDTO;
 import com.befty.service.ProjectService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProjectServiceImpl extends AbstractMapService<ProjectDTO, String> implements ProjectService {
     @Override
     public List<ProjectDTO> findAll() {

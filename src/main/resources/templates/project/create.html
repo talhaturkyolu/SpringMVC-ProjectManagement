@@ -55,11 +55,9 @@
                                             <div class="col-sm-7 col-md-7">
                                                 <div class="form-group">
                                                     <label>Assigned Manager</label>
-                                                    <select name="role_id" id="role_id" class="custom-select" required="required">
-                                                        <option value="select" selected="selected">Select</option>
-                                                        <option value="admin">Admin</option>
-                                                        <option value="manager">Manager</option>
-                                                        <option value="employee">Employee</option>
+                                                    <select  th:field="*{assignedManager}" class="custom-select" required="required">
+                                                        <option th:value="' '" th:text="Select"></option>
+                                                        <option th:each="manager : ${managers}" th:value="${manager.userName}" th:text="${manager.firstName + ' ' +manager.lastName}">
                                                     </select>
                                                 </div>
                                             </div>
@@ -148,16 +146,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>PRJ001</td>
-                        <td>Befty Upgrade</td>
-                        <td>11.03.2020-11.09.2020</td>
-                        <td>Talha Turkyolu</td>
-                        <td>In Progress</td>
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.projectCode}"></td>
+                        <td th:text="${project.projectName}"></td>
+                        <td th:text="${project.startDate + ' - ' +project.endDate}"></td>
+                        <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
+                        <td th:text="${project.projectStatus}"></td>
                         <td class="actions">
-                            <a href="#" class="btn btn-outline-warning">Update</a>
-                            <a href="#" class="btn btn-outline-danger">Delete</a>
-                            <a href="#" class="btn btn-outline-info">Complete</a>
+                            <a href="" class="btn btn-outline-warning">Update</a>
+                            <a href="" class="btn btn-outline-danger">Delete</a>
+                            <a href="" class="btn btn-outline-info">Complete</a>
                         </td>
                     </tr>
                     </tbody>

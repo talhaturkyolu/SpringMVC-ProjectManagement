@@ -39,7 +39,7 @@
                                     <div class="col-sm-7 col-md-7">
                                         <div class="form-group">
                                             <label for="project_name" class="col-form-label">Project Name</label>
-                                            <input id="project_name" type="text" placeholder="project name" th:field="*{projectName}" class="form-control">
+                                            <input id="project_name" type="text" placeholder="project name" th:field="*{projectName}" class="form-control"required>
                                         </div>
                                     </div>
                                     <!-- End Project Name  -->
@@ -47,7 +47,7 @@
                                     <div class="col-sm-7 col-md-7">
                                         <div class="form-group">
                                             <label for="project_code" class="col-form-label">Project Code</label>
-                                            <input id="project_code" type="text" placeholder="project code" th:field="*{projectCode}" class="form-control">
+                                            <input id="project_code" type="text" placeholder="project code" th:field="*{projectCode}" class="form-control" readonly required>
                                         </div>
                                     </div>
                                     <!-- End Project Code  -->

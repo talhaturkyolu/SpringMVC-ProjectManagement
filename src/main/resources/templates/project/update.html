@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: header"></head>
+
+<body>
+
+<div class="dashboard-main-wrapper">
+
+    <div th:replace="/fragments/header :: header"></div>
+
+    <div th:replace="/fragments/left-sidebar :: left-sidebar"></div>
+
+    <div class="dashboard-wrapper">
+
+        <div class="dashboard-ecommerce">
+
+            <div class="container-fluid dashboard-content">
+
+                <div class="ecommerce-widget">
+
+
+
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="section-block" id="user">
+                                <h3 class="section-title">Project Create</h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ------------------------FORM START----------------------------- -->
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <form class="needs-validation" novalidate th:action="@{/project/update/{id}(id=${project.projectCode})}" method="post" th:object="${project}">
+                                <div class="row">
+                                    <div class="col-sm-7 col-md-7">
+                                        <div class="form-group">
+                                            <label for="project_name" class="col-form-label">Project Name</label>
+                                            <input id="project_name" type="text" placeholder="project name" th:field="*{projectName}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!-- End Project Name  -->
+
+                                    <div class="col-sm-7 col-md-7">
+                                        <div class="form-group">
+                                            <label for="project_code" class="col-form-label">Project Code</label>
+                                            <input id="project_code" type="text" placeholder="project code" th:field="*{projectCode}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!-- End Project Code  -->
+
+                                    <div class="col-sm-7 col-md-7">
+                                        <div class="form-group">
+                                            <label>Assigned Manager</label>
+                                            <select  th:field="*{assignedManager}" class="custom-select" required="required">
+                                                <option th:each="manager : ${managers}" th:value="${manager.userName}" th:text="${manager.firstName + ' ' +manager.lastName}">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- End Assigned Manager  -->
+                                    <div class="col-sm-5 col-md-5">
+                                        <div class="form-group">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <label>Project Start Date</label>
+                                            <div class="input-group date" id="project_start_date" data-target-input="nearest">
+                                                <input type="date" class="form-control datetimepicker-input" th:field="*{startDate}" data-target="#datetimepicker4" />
+                                                <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 col-md-1">
+
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <label>Project End Date</label>
+                                            <div class="input-group date" id="project_end_date" data-target-input="nearest">
+                                                <input type="date" class="form-control datetimepicker-input"  th:field="*{endDate}" data-target="#datetimepicker4" />
+                                                <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-md-7">
+
+                                    </div>
+                                    <div class="col-sm-7 col-md-7">
+                                        <label>Project Detail</label>
+                                        <div class="form-group">
+                                        <textarea id="project_detail" name="detail" th:field="*{projectDetail}"
+                                                  rows="3" cols="92" placeholder=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-7 col-md-7">
+                                        <div class="float-right">
+                                            <button type="submit" class="btn btn-outline-success">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- ------------------------FORM END----------------------------- -->
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ------------------------TABLE START----------------------------- -->
+
+            <div class="col-lg-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">Project List</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Project Code</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Start/End Date</th>
+                        <th scope="col">Manager</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.projectCode}"></td>
+                        <td th:text="${project.projectName}"></td>
+                        <td th:text="${#temporals.format(project.startDate,'MM.dd.yyyy') + ' - ' +#temporals.format(project.endDate,'MM.dd.yyyy')}"></td>
+                        <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
+                        <td th:text="${project.projectStatus}"></td>
+                        <td class="actions">
+                            <a href="" class="btn btn-outline-warning">Update</a>
+                            <a th:href="@{/project/delete/{id}(id=${project.getProjectCode()})}" class="btn btn-outline-danger">Delete</a>
+                            <a th:href="@{/project/complete/{id}(id=${project.getProjectCode()})}" class="btn btn-outline-info">Complete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ------------------------TABLE END----------------------------- -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="/fragments/footer :: footer"></div>
+
+</div>
+
+<div th:replace="/fragments/javascript :: js"></div>
+
+</body>
+
+</html>

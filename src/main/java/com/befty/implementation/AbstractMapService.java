@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractMapService <T,ID>  {
+public abstract class AbstractMapService<T,ID> {
 
-    protected Map<ID, T> map = new HashMap<>();
+    protected Map<ID,T> map = new HashMap<>();
 
-     T save(ID id, T object){
+    T save(ID id,T object){
         map.put(id,object);
         return object;
     }
 
     List<T> findAll(){
-         return new ArrayList<>(map.values());
+        return new ArrayList<>(map.values());
     }
 
     T findById(ID id){
@@ -23,16 +23,23 @@ public abstract class AbstractMapService <T,ID>  {
     }
 
     void deleteById(ID id){
-         map.remove(id);
+        map.remove(id);
     }
 
-    void delete (T object){
-         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
-    }
+    void delete(T object){
 
-    void update(ID id, T object){
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+    }
+
+    void update(ID id,T object){
         map.put(id,object);
     }
+
+
+
+
+
+
+
 
 }
